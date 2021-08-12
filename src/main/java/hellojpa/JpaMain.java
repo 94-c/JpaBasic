@@ -20,17 +20,14 @@ public class JpaMain {
 
         try {
 
-            //비영속
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("HelloJPA");
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZZZZZ");
 
-            //영속
-            System.out.println("member = " + member);
-            em.persist(member);
 
-            tx.commit(); //트랜잭션 커밋
 
+            System.out.println("===========================");
+
+            tx.commit();
         } catch (Exception e) {
             tx.rollback();
         } finally {
